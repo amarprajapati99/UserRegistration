@@ -53,6 +53,16 @@ public class UserRegistration {
 		else
 			System.out.println("please enter a valid mobile number");
 		
+		System.out.println("enter your password");
+		String pass = scanner.next();
+		pattern = Pattern.compile("^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$",Pattern.CASE_INSENSITIVE);
+		matcher = pattern.matcher(pass);
+		matches = matcher.find();
+		if(matches)
+			System.out.println("password is valid");
+		else
+			System.out.println("please enter your valid password");
+		
 		
 
 	}
