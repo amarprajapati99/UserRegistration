@@ -12,14 +12,15 @@ public class UserRegistration {
 		String firstName = scanner.nextLine();
 
 		Pattern pattern = Pattern.compile("[A-Z]{1}[a-z]{2}+");
+		var firstChar = firstName.substring(0, 1);
 		Matcher matcher = pattern.matcher(firstName);
 		boolean matches = matcher.find();
 		if (matches)
 			System.out.println("your first name is valid");
-		else if (firstName.length() <= 3)
+		else if (firstName.length() <= 3 && firstChar == firstName.toUpperCase())
 			System.out.println("enter max 4 character");
 		else
-			System.out.println("your  last name is invalid");
+			System.out.println("your  first name is invalid");
 		System.out.println("enter your last name");
 		
 		
@@ -29,7 +30,7 @@ public class UserRegistration {
 		else if (lastName.length() <= 3)
 			System.out.println("enter max 4 character");
 		else
-			System.out.println("your name is invalid");
+			System.out.println("your last name is invalid");
 
 		System.out.println("enter your email");
 		String emailId = scanner.nextLine();
@@ -56,6 +57,7 @@ public class UserRegistration {
 		System.out.println("enter your password");
 		String pass = scanner.next();
 		pattern = Pattern.compile("^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$",Pattern.CASE_INSENSITIVE);
+		pattern = Pattern.compile("[$&+,:;=?@#|'<>.-^*()%!]");
 		matcher = pattern.matcher(pass);
 		matches = matcher.find();
 		if(matches)
